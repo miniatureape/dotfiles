@@ -2,10 +2,10 @@ syntax on
 let mapleader=","
 set number
 set expandtab
-set smartcase 
 set shiftwidth=4
 set tabstop=4
 set showmatch 
+set ignorecase
 set smartcase
 set grepprg=ack
 set nowrap
