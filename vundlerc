@@ -9,6 +9,13 @@ call vundle#rc()
 Plugin 'gmarik/vundle'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
+Plugin 'vim-scripts/Align'
+Plugin 'scrooloose/nerdtree'
 
 " Required by Vundle
 filetype plugin indent on
+
+" Bundle specific settings
+" CtrlP
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_cmd = 'CtrlPMRU'

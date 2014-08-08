@@ -10,7 +10,18 @@ set smartcase
 set grepprg=ack
 set nowrap
 set wildmenu
+
+
+" Keymaps
+" -------
+
+" escape
 inoremap jj <Esc>
+
+" stay in visual mode after tabbing
+vnoremap < <gv
+vnoremap > >gv
+
 
 " Handle Vundle and vundle managed plugins
 source ~/.vim/vundlerc

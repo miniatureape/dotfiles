@@ -11,3 +11,6 @@ ln -sbf $SRC_DIR/tmux.conf ~/.tmux.conf
 
 # .bash_aliases
 ln -sbf $SRC_DIR/bash_aliases ~/.bash_aliases
+
+# .bash_profile
+ln -sbf $SRC_DIR/bash_profile ~/.bash_profile
