@@ -22,12 +22,11 @@ inoremap jj <Esc>
 vnoremap < <gv
 vnoremap > >gv
 
-
 " Handle Vundle and vundle managed plugins
 source ~/.vim/vundlerc
 
 " add location specific rules
-let hostrc='~/vim-' . $HOSTNAME . ".rc"
+let hostrc=$HOME . '/.' . $HOSTNAME . ".vimrc"
 if filereadable(hostrc)
-    source hostrc
-endif
+    exec 'source' hostrc
+    endif
