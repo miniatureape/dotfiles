@@ -9,7 +9,6 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/Align'
 Plugin 'scrooloose/nerdtree'
 Plugin 'joonty/vdebug.git'
