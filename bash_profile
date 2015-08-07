@@ -4,6 +4,14 @@ if [ -f ~/.bashrc ]; then
    source ~/.bashrc
 fi
 
+if [ -f ~/.`hostname`.bashrc ]; then
+   source ~/.`hostname`.bashrc
+fi
+
+if [ -f ~/.`hostname`.bash_aliases ]; then
+   source ~/.`hostname`.bash_aliases
+fi
+
 PATH=$PATH:~/bin
 function symlinkhere {
     FILES=($@)
@@ -12,3 +20,4 @@ function symlinkhere {
         ln -s $f `basename $f`;
     done
 }
+
