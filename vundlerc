@@ -36,11 +36,11 @@ let g:ctrlp_mruf_max = 1000
 
 " VDebug
 let g:vdebug_options = {
-\    "port" : 9089,
+\    "port" : 9090,
 \    "timeout" : 20,
 \    "on_close" : 'detach',
 \    "break_on_open" : 0,
-\    "ide_key" : 'vim',
+\    "ide_key" : '',
 \    "debug_window_level" : 0,
 \    "debug_file_level" : 0,
 \    "debug_file" : "",
@@ -50,9 +50,7 @@ let g:vdebug_options = {
 let s:vdebug_host = system("ifconfig | grep inet | grep -v inet6 | awk '{print $2}' | grep -v 127.0.0.1 | head -n 1")
 let s:vdebug_host = substitute(s:vdebug_host, '[\n\s\r]*$', '', '')
 
-
 if !empty(s:vdebug_host)
-    " echo "Chosen IP address is: " . s:vdebug_host
     let g:vdebug_options['server'] = s:vdebug_host
 endif
 
