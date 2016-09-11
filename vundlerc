@@ -23,6 +23,11 @@ Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-fireplace'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'xolox/vim-notes'
+Plugin 'xolox/vim-misc'
+Plugin 'tobyS/pdv'
+Plugin 'farseer90718/vim-taskwarrior'
+
 
 " Required by Vundle
 call vundle#end()
@@ -36,7 +41,7 @@ let g:ctrlp_mruf_max = 1000
 
 " VDebug
 let g:vdebug_options = {
-\    "port" : 9090,
+\    "port" : 9000,
 \    "timeout" : 20,
 \    "on_close" : 'detach',
 \    "break_on_open" : 0,
@@ -77,3 +82,14 @@ let g:vdebug_options = {
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" PDV
+let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+
+" VimNotes
+let g:notes_unicode_enabled = 0
+let g:notes_smart_quotes = 0
+let g:notes_suffix = '.md'
+
+
+
