@@ -11,6 +11,11 @@ sup () {
     git log -p --author ${1-`whoami`} --since ${2-1weeks}
 }
 
+# Say something via irccat: room, msg
+catsay () {
+    echo "$1 \"$2\"" | nc irccat.etsycorp.com 12345
+}
+
 # Find alias file specific for this host by looking for and sourcing .$HOSTNAME.bash_aliases
 HOSTBASH="."`hostname`".bash_aliases";
 if [ -f $HOSTBASH ];
