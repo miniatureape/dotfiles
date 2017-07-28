@@ -26,6 +26,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'xolox/vim-misc'
 Plugin 'tobyS/pdv'
+Plugin 'vimwiki/vimwiki'
 
 
 " Required by Vundle
@@ -85,10 +86,5 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " PDV
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
 
-" VimNotes
-let g:notes_unicode_enabled = 0
-let g:notes_smart_quotes = 0
-let g:notes_suffix = '.md'
-
-
-
+" Vimwiki
+let g:vimwiki_list = [{'path': '~/Dropbox/wiki/', 'path_html': '~/wiki-html/', 'syntax': 'markdown', 'ext': '.md'}]
