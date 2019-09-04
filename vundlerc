@@ -2,62 +2,41 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" Plugins 
-Plugin 'gmarik/vundle'
-Plugin 'tpope/vim-fugitive'
-Plugin 'kien/ctrlp.vim'
-Plugin 'vim-scripts/Align'
-Plugin 'scrooloose/nerdtree'
-Plugin 'joonty/vdebug.git'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'orthecreedence/void.vim'
-Plugin 'tpope/vim-sexp-mappings-for-regular-people'
-Plugin 'guns/vim-sexp'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'guns/vim-clojure-static'
-Plugin 'tpope/vim-fireplace'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'xolox/vim-misc'
-Plugin 'tobyS/pdv'
-Plugin 'vimwiki/vimwiki'
-
-
-" Required by Vundle
-call vundle#end()
-filetype plugin indent on
+" set rtp+=~/.vim/bundle/Vundle.vim
+" filetype plugin indent on
 
 " Bundle specific settings
+
 " CtrlP
 let g:ctrlp_map = '<leader>p'
-let g:ctrlp_cmd = 'CtrlPMRU'
+let g:ctrlp_cmd = 'CtrlPMRUFiles'
 let g:ctrlp_mruf_max = 1000
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+endif
+" Have ctrlp ignore some things
+set wildignore+=*/.git/*,*/tmp/*,*.swp,node_modules/*,*/cache/*
+" Use leader a to run control p over 'all' the files. Too slow to do this every time.
+nmap <leader>a :CtrlP()<CR>
 
 " VDebug
 let g:vdebug_options = {
 \    "port" : 9000,
-\    "timeout" : 20,
+\    "timeout" : 30,
 \    "on_close" : 'detach',
+\    "ide_key" : 'PHPSTORM',
 \    "break_on_open" : 0,
-\    "ide_key" : '',
-\    "debug_window_level" : 0,
-\    "debug_file_level" : 0,
-\    "debug_file" : "",
-\    "watch_window_style" : 'expanded'
+\    "debug_file" : "/Users/jdonato/.vdebug.log",
+\    "watch_window_style" : 'expanded',
+\    'marker_default'       : '*',
+\    'marker_closed_tree'   : '+',
+\    'marker_open_tree'     : '-',
 \}
 
-let s:vdebug_host = system("ifconfig | grep inet | grep -v inet6 | awk '{print $2}' | grep -v 127.0.0.1 | head -n 1")
-let s:vdebug_host = substitute(s:vdebug_host, '[\n\s\r]*$', '', '')
-
-if !empty(s:vdebug_host)
-    let g:vdebug_options['server'] = s:vdebug_host
-endif
+let g:vdebug_options["path_maps"] = { '/opt/mailchimp/current/' : '/Volumes/casesensitive/mailchimp/'}
+let g:vdebug_options["server"] = "192.168.213.1"
 
 let g:vdebug_keymap = {
 \    "step_over"            : "<Leader><F2>",
@@ -71,20 +50,28 @@ let g:vdebug_keymap = {
 \    "get_context"          : "<Leader><F11>",
 \    "eval_under_cursor"    : "<Leader><F12>",
 \}
- 
-let g:vdebug_options = {
-\    'marker_default'       : '*',
-\    'marker_closed_tree'   : '+',
-\    'marker_open_tree'     : '-',
-\}
 
 " Ultisnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
 
 " PDV
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
 
 " Vimwiki
-let g:vimwiki_list = [{'path': '~/Dropbox/wiki/', 'path_html': '~/wiki-html/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [
+\{'path': '~/wiki/', 'path_html': '~/wiki-html/', 'syntax': 'markdown', 'ext': '.md'}, 
+\{'path': '~/notebook/notes/wiki', 'path_html': '~/wiki-html/', 'syntax': 'markdown', 'ext': '.md'}
+\]
+let g:github_enterprise_urls = ['git.rsglab.com']
+
+
+" Gutentags
+let g:gutentags_cache_dir = '~/.vim/gutentags'
+let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml',
+                            \ '*.phar', '*.ini', '*.rst', '*.md',
+                            \ '*vendor/*/test*', '*vendor/*/Test*',
+                            \ '*vendor/*/fixture*', '*vendor/*/Fixture*',
+                            \ '*var/cache*', '*var/log*']
